@@ -29,8 +29,6 @@
 // @downloadURL   http://raw.github.com/eag1e/VK_album_downloader/master/vkalbumdownloader.user.js
 // ==/UserScript==
 
-
-
 //if (GM_getValue("switch") === undefined) GM_setValue("switch", "on");
 //
 var nPhotos, album_box, cur_done = Infinity;
@@ -212,7 +210,8 @@ function zipper(photo_resp)
 	if (!is_album()) return;
 	if (photo_resp === undefined)
 	{
-		album_title = document.title.split("|")[0].trim();
+		album_title = document.getElementsByClassName("photos_album_intro")[0].getElementsByTagName('h1')[0].innerHTML;
+        //album_title = document.title.split("|")[0].trim()
 		var href = window.location.href;
 		album_url = href.slice(href.lastIndexOf("_")+1);
 		//alert(album_url);
